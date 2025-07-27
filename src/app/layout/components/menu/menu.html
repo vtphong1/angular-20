@@ -1,0 +1,6 @@
+<div class="navbar">
+  <ng-container *ngFor="let item of listMenu">
+    <a *hasAnyAuthority="item.role" (click)="goTo(item.url)">{{item.name}}</a>
+  </ng-container>
+  <a class="right" (click)="logOut()">LogOut</a>
+</div>

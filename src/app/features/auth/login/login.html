@@ -1,0 +1,27 @@
+<h2 style="text-align: center">Login Form</h2>
+
+<form [formGroup]="loginForm">
+  <div class="imgcontainer">
+    <img src="./assets/images/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input formControlName="userName" id="uname" type="text" placeholder="Enter Username" name="uname" required>
+    <app-error-message [control]="loginForm.get('userName')!" fieldName="Tài khoản"></app-error-message>
+
+    <label for="psw"><b>Password</b></label>
+    <input formControlName="passWord" id="psw" type="password" placeholder="Enter Password" name="psw" required>
+    <app-error-message [control]="loginForm.get('passWord')!" [fieldName]="'Mật khẩu'"></app-error-message>
+
+    <button type="submit" (click)="login()">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>

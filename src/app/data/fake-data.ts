@@ -1,0 +1,62 @@
+export const AUTHORIZES = {
+  DASHBOARD: {
+    DASHBOARD_READ: 'DASHBOARD_READ',
+    DASHBOARD_UPDATE: 'DASHBOARD_UPDATE',
+    DASHBOARD_ADD: 'DASHBOARD_ADD',
+    DASHBOARD_DELETE: 'DASHBOARD_DELETE'
+  },
+  CONTACT: {
+    CONTACT_READ: 'CONTACT_READ',
+    CONTACT_UPDATE: 'CONTACT_UPDATE',
+    CONTACT_ADD: 'CONTACT_ADD',
+    CONTACT_DELETE: 'CONTACT_DELETE'
+  },
+  USER: {
+    USER_READ: 'USER_READ',
+    USER_UPDATE: 'USER_UPDATE',
+    USER_ADD: 'USER_ADD',
+    USER_DELETE: 'USER_DELETE'
+  },
+  ADMIN: {
+    ADMIN_READ: 'ADMIN_READ',
+    ADMIN_UPDATE: 'ADMIN_UPDATE',
+    ADMIN_ADD: 'ADMIN_ADD',
+    ADMIN_DELETE: 'ADMIN_DELETE'
+  }
+}
+export const MENU_LIST = [
+  {
+    id: 'dashboard',
+    name: 'Dashboard',
+    url: '/dashboard',
+    role: [AUTHORIZES.DASHBOARD.DASHBOARD_READ]
+  },
+  {
+    id: 'contact',
+    name: 'Contact',
+    url: '/contact',
+    role: [AUTHORIZES.CONTACT.CONTACT_READ]
+  },
+  {
+    id: 'user',
+    name: 'User',
+    url: '/user',
+    role: [AUTHORIZES.USER.USER_READ]
+  },
+  {
+    id: 'admin',
+    name: 'Admin',
+    url: '/admin',
+    role: [AUTHORIZES.ADMIN.ADMIN_READ]
+  }
+]
+
+export const ROLE_LOAD_EFFECT = [
+  AUTHORIZES.DASHBOARD.DASHBOARD_READ,
+  AUTHORIZES.DASHBOARD.DASHBOARD_ADD,
+  AUTHORIZES.DASHBOARD.DASHBOARD_DELETE,
+  AUTHORIZES.DASHBOARD.DASHBOARD_UPDATE,
+  AUTHORIZES.CONTACT.CONTACT_READ,
+  AUTHORIZES.CONTACT.CONTACT_ADD,
+  AUTHORIZES.USER.USER_READ,
+]

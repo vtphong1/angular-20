@@ -1,0 +1,9 @@
+<p class="p-2">dashboard works!</p>
+<button *hasAnyAuthority="['DASHBOARD_ADD']" (click)="addNewCookie()">Thêm</button>
+<button *hasAnyAuthority="['DASHBOARD_UPDATE']" (click)="testEnum()">Sửa</button>
+<button *hasAnyAuthority="['DASHBOARD_DELETE']">Xóa</button>
+
+<div>Test symbol</div>
+{{getProperty(person, "age")}}
+<div>Hello baby</div>
+<div>{{storageService.behavior.getValue()}}</div>
