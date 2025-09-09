@@ -5,7 +5,7 @@ import {HasAnyAuthority} from './directives/has-any-authority';
 export const SHARED_COMPONENTS = [
   ConfirmDialog,
   ErrorMessage,
-  TableCommon
+  TableCommon,
 ]
 
 export const SHARED_DIRECTIVES = [

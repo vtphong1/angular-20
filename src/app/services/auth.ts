@@ -14,7 +14,7 @@ export class AuthService {
   private router = inject(Router);
   private storageService = inject(StorageService);
   login(){
-    return of('PhongYeuNhatHa');
+    return of('You are logged in');
   }
 
   setAuthenticated(authenticated: boolean): void {

@@ -8,12 +8,10 @@ import {Router} from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class IdleService {
-  private authService = inject(AuthService);
-  private router = inject(Router);
   private isIdle = signal(false);
   private idleTimeout = IDLE_TIMER; // 5 phút
-
-  constructor() {
+  constructor(private authService: AuthService,
+              private router: Router){
     this.trackUserActivity();
     this.watchIdleState();
   }

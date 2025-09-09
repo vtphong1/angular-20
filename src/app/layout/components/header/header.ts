@@ -1,4 +1,4 @@
-import {Component, HostBinding, inject, PLATFORM_ID, Renderer2} from '@angular/core';
+import {Component, HostBinding, inject, OnDestroy, OnInit, PLATFORM_ID, Renderer2} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
@@ -47,12 +47,12 @@ export class Header {
     this._router.navigate(['/auth/login']);
   }
 
+  changeMode() {
+    this.themService.toggle()
+  }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  changeMode() {
-    this.themService.toggle()
   }
 }

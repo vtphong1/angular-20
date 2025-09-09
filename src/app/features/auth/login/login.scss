@@ -35,7 +35,8 @@ button:hover {
 }
 
 img.avatar {
-  width: 25%;
+  max-width: 25%;
+  max-height: 290px;
   border-radius: 50%;
 }
 

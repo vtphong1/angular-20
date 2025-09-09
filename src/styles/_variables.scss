@@ -1,0 +1,17 @@
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px
+);
+
+$btnColor: (
+  primary: (
+    color: var(--btn-primary)
+  ),
+  secondary: (
+    color: var(--btn-secondary)
+  )
+);
+
+$font-size-base: 16px;

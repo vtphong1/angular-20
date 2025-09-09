@@ -1,10 +1,10 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth';
 import {Store} from '@ngrx/store';
 import {selectRoleData} from '../../../state/role/role.selectors';
 import {MENU_LIST} from '../../../data/fake-data';
-import {map, of, Subject, takeUntil, tap} from 'rxjs';
+import {Subject, takeUntil, tap} from 'rxjs';
 import {loadRole} from '../../../state/role/role.actions';
 import {StorageService} from '../../../services/storage.service';
 import {CommonModule} from '@angular/common';
@@ -20,11 +20,9 @@ import {ErrorMessage} from '../../../shared/components/error-message/error-messa
 export class Login {
   private router = inject(Router);
   private authService = inject(AuthService);
-
   private storageService = inject(StorageService);
   private destroy$ = new Subject();
   private store = inject(Store);
-
   private fb = inject(FormBuilder);
   loginForm = this.fb.group({
     userName: [null, Validators.compose([Validators.required])],

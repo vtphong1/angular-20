@@ -1,6 +1,9 @@
 /* Header/logo Title */
+@use '../../../../styles/dark-theme' as *;
+@use '../../../../styles/light-theme' as *;
+
 .header {
-  padding: 80px;
+  padding: 15px;
   text-align: center;
   background: #1abc9c;
   color: white;
@@ -9,4 +12,9 @@
 /* Increase the font size of the heading */
 .header h1 {
   font-size: 40px;
+}
+
+
+.text-primary {
+  color: var(--text-color);
 }

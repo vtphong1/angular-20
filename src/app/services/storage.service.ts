@@ -1,6 +1,6 @@
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
-import {BehaviorSubject, ReplaySubject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,6 @@ import {BehaviorSubject, ReplaySubject} from 'rxjs';
 export class StorageService {
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   behavior = new BehaviorSubject<any>(null);
-  replay = new ReplaySubject(2);
 
   getItem(key: string): string | null {
     if (!this.isBrowser) return null;

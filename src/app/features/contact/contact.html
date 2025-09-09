@@ -1,1 +1,9 @@
-<p>contact works!</p>
+<cdk-virtual-scroll-viewport
+  itemSize="50"
+  style="height: 300px; width: 250px; border: 1px solid #ccc;"
+  (scrolledIndexChange)="onScroll($event)">
+  <div *cdkVirtualFor="let item of items" class="item">
+    {{item.name | json}}
+  </div>
+</cdk-virtual-scroll-viewport>
+<div *ngIf="loading">Đang tải...</div>

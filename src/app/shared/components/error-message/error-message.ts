@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, inject, Input, OnInit} from '@angular/core';
-import {AbstractControl, AbstractControlDirective, ControlContainer, FormControl, FormGroup} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {AbstractControl} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
 @Component({
@@ -7,7 +7,6 @@ import {CommonModule} from '@angular/common';
   imports: [CommonModule],
   templateUrl: './error-message.html',
   styleUrl: './error-message.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorMessage implements OnInit{
   @Input() control!: AbstractControl;
