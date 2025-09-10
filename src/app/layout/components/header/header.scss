@@ -1,6 +1,6 @@
 /* Header/logo Title */
-@use 'dark-theme' as *;
-@use 'light-theme' as *;
+@use 'styles/dark-theme' as *;
+@use 'styles/light-theme' as *;
 
 .header {
   padding: 15px;
