@@ -1,0 +1,97 @@
+/* Grid Container */
+.grid {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* Mobile - 1 cột */
+.grid {
+  grid-template-columns: 1fr;
+}
+
+/* Tablet - 2 cột */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop - 3 cột */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large Desktop - 4 cột */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Grid Items */
+.item {
+  border: 2px solid #333;
+  padding: 20px;
+  background: white;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Các loại item khác nhau */
+.item.span-2 {
+  grid-column: span 1; /* Mobile: 1 cột */
+}
+
+@media (min-width: 768px) {
+  .item.span-2 {
+    grid-column: span 2; /* Tablet+: 2 cột */
+  }
+}
+
+.item.span-3 {
+  grid-column: span 1; /* Mobile: 1 cột */
+}
+
+@media (min-width: 1024px) {
+  .item.span-3 {
+    grid-column: span 3; /* Desktop+: 3 cột */
+  }
+}
+
+.item.span-full {
+  grid-column: 1 / -1; /* Full width */
+}
+
+.item.tall {
+  min-height: 200px;
+}
+
+@media (min-width: 768px) {
+  .item.tall {
+    grid-row: span 2; /* Tablet+: 2 hàng */
+  }
+}
+
+.item.big {
+  min-height: 250px;
+}
+
+@media (min-width: 1024px) {
+  .item.big {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+/* Auto-fit Grid */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}

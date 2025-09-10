@@ -1,3 +1,36 @@
 <p>user works!</p>
 
 <button style="margin-right: 10px; cursor: pointer; padding: 5px" (click)="changePage(item)" *ngFor="let item of arr">{{item}}</button>
+<div class="container">
+  <h2>Fixed Grid Layout (1-2-3-4 cột tùy màn hình)</h2>
+  <div class="grid">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item span-2">Item 5 (span 2 cột)</div>
+    <div class="item">Item 6</div>
+    <div class="item">Item 7</div>
+    <div class="item tall">Item 8 (tall - 2 hàng)</div>
+    <div class="item">Item 9</div>
+    <div class="item">Item 10</div>
+    <div class="item span-3">Item 11 (span 3 cột)</div>
+    <div class="item">Item 12</div>
+    <div class="item big">Item 13 (big - 2x2)</div>
+    <div class="item">Item 14</div>
+    <div class="item">Item 15</div>
+    <div class="item span-full">Item 16 (full width)</div>
+  </div>
+
+  <h2>Auto-fit Grid (tự động điều chỉnh số cột)</h2>
+  <div class="auto-grid">
+    <div class="item">Auto Item 1</div>
+    <div class="item">Auto Item 2</div>
+    <div class="item">Auto Item 3</div>
+    <div class="item">Auto Item 4</div>
+    <div class="item">Auto Item 5</div>
+    <div class="item">Auto Item 6</div>
+    <div class="item">Auto Item 7</div>
+    <div class="item">Auto Item 8</div>
+  </div>
+</div>

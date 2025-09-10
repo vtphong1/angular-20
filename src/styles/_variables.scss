@@ -4,6 +4,27 @@ $breakpoints: (
   lg: 1024px,
   xl: 1200px
 );
+@mixin respond($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+/*Cách dùng*/
+//@include respond(md) {
+//  //style
+//}
+@mixin respond-between($min, $max) {
+  $min-val: map-get($breakpoints, $min);
+  $max-val: map-get($breakpoints, $max);
+
+  @media (min-width: $min-val) and (max-width: $max-val) {
+    @content;
+  }
+}
+/*Cách dùng*/
+//@include respond-between(md, lg) {
+//  // style
+//}
 
 $btnColor: (
   primary: (
@@ -13,5 +34,46 @@ $btnColor: (
     color: var(--btn-secondary)
   )
 );
+/*Cách dùng*/
+//@each $name, $props in $btnColor {
+//  .btn-#{$name} {
+//    background-color: map-get($props, color);
+//  }
+//}
 
 $font-size-base: 16px;
+//$config: (
+//  buttons: (
+//    primary: (
+//      color: red,
+//      hover: green,
+//      border: white
+//    ),
+//    secondary: (
+//      color: red,
+//      hover: green,
+//      border: white
+//    )
+//  ),
+//  alerts: (
+//    success: (
+//      color: green,
+//      background: lightgreen
+//    ),
+//    error: (
+//      color: red,
+//      background: pink
+//    )
+//  )
+//);
+//
+//@each $component, $variants in $config {
+//  @each $variant, $props in $variants {
+//    .#{$component}-#{$variant} {
+//      @each $prop, $value in $props {
+//        #{$prop}: #{$value};
+//      }
+//    }
+//  }
+//}
+

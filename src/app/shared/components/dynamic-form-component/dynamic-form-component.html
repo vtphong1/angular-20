@@ -1,0 +1,55 @@
+<form class="form" [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+
+  <ng-container *ngFor="let field of fields">
+    <ng-container [ngSwitch]="field.type">
+      <ng-container *ngSwitchCase="'input_rate'">
+        <div class="control-input-rate" formArrayName="{{ field.name }}">
+          <!-- Nếu là FormArray -->
+          <div class="control-input_rate_item" *ngFor="let item of getFormArray(field.name).controls; let i = index" [formGroupName]="i">
+            <div *ngFor="let child of field.children">
+              <label>{{ child.label }}</label>
+              <ng-container [ngSwitch]="child.type">
+                <ng-container *ngSwitchCase="'rate'">
+                  <div style="display: flex; justify-content: space-between">
+                    <div class="label">{{field.label}}</div>
+                    <!--<nz-rate nzCount="5" [formControlName]="child.name"></nz-rate>-->
+                  </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="'radio_button'">
+                  <div class="custom-radio-button">
+                    <input hidden="true" type="radio" id="like" [name]="child.name" value="like" [formControlName]="child.name"/>
+                    <label class="custom-radio-button-label" for="like">Like</label>
+                  </div>
+
+                  <div class="custom-radio-button" style="margin-left: 5px">
+                    <input hidden="true" type="radio" id="dislike" [name]="child.name" value="dislike" [formControlName]="child.name">
+                    <label class="custom-radio-button-label" for="dislike">Dislike</label>
+                  </div>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <div class="control-field">
+                    <input nz-input *ngIf="child.type === 'text'" type="text" [formControlName]="child.name" />
+                  </div>
+                </ng-container>
+              </ng-container>
+              <app-error-message [control]="item.get(child.name)!"></app-error-message>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchDefault>
+        <div class="control-field">
+          <div class="control-label">{{field.label}}</div>
+          <input nz-input
+                 *ngIf="field.type === 'text' || field.type === 'number'"
+                 [attr.type]="field.type"
+                 [formControlName]="field.name"
+          />
+          <app-error-message [control]="dynamicForm.get(field.name)!"></app-error-message>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</form>
+

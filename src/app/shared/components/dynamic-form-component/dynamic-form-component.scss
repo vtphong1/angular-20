@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px
+}
+
+.custom-radio-button {
+  display: inline-flex;
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:has(input[type="radio"]:checked) {
+    background-color: red;
+    color: white;
+  }
+
+  .custom-radio-button-label {
+    padding: 5px;
+    cursor: pointer;
+  }
+}
+
+.control-input-rate{
+
+  .control-input_rate_item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+  }
+
+}
