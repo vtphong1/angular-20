@@ -18,15 +18,30 @@ export class StorageService {
   setItem(key: string, value: string): void {
     if (!this.isBrowser) return;
     localStorage.setItem(key, value);
+    document.cookie=`token=${value}`
+  }
+
+  getCookie(name: string) {
+    const cookies = document.cookie.split('; ');
+    for (let cookie of cookies) {
+      const [key, val] = cookie.split('=');
+      if (key === name) return val;
+    }
+    return null;
   }
 
   removeItem(key: string): void {
     if (!this.isBrowser) return;
     localStorage.removeItem(key);
+    this.deleteCookie(key);
   }
 
   clear(): void {
     if (!this.isBrowser) return;
     localStorage.clear();
+  }
+
+  deleteCookie(name: string) {
+    document.cookie = `${name}=; Max-Age=0; path=/;`;
   }
 }

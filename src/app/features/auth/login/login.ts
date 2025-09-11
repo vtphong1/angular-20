@@ -4,7 +4,7 @@ import {AuthService} from '../../../services/auth';
 import {Store} from '@ngrx/store';
 import {selectRoleData} from '../../../state/role/role.selectors';
 import {MENU_LIST} from '../../../data/fake-data';
-import {Subject, takeUntil, tap} from 'rxjs';
+import {catchError, EMPTY, Subject, takeUntil, tap} from 'rxjs';
 import {loadRole} from '../../../state/role/role.actions';
 import {StorageService} from '../../../services/storage.service';
 import {CommonModule} from '@angular/common';
@@ -31,17 +31,23 @@ export class Login {
   roleData = this.store.selectSignal(selectRoleData);
 
   login() {
-    this.authService.login()
+    const body = this.loginForm.getRawValue();
+    this.authService.login(body)
       .pipe(
-        takeUntil(this.destroy$),
+        catchError(err => {
+          console.log('Sai tài khoản hoặc mật khẩu', err);
+          return EMPTY;
+        }),
         tap(res => {
           this.authService.setAuthenticated(true);
-          this.storageService.setItem('authenticated', 'true');
+          this.storageService.setItem('authenticated', res?.token);
           this.store.dispatch(loadRole())
-        })
+        }),
+        takeUntil(this.destroy$),
       )
       .subscribe(
         (res: any) => {
+          console.log('Login success', res)
           const listRole = this.roleData();
           const firstMenuItem = this.findFirstMenuItem(listRole);
           if (firstMenuItem) this.router.navigate([firstMenuItem?.url]);

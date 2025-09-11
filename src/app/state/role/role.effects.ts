@@ -2,7 +2,6 @@ import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {catchError, map, of, switchMap} from 'rxjs';
 import {loadRole, loadRoleFailure, loadRoleSuccess} from './role.actions';
-import {ROLE_LOAD_EFFECT} from '../../data/fake-data';
 import {AuthService} from '../../services/auth';
 
 export class RoleEffects {
@@ -13,9 +12,9 @@ export class RoleEffects {
     this.actions$.pipe(
       ofType(loadRole),
       switchMap(() =>
-        of(ROLE_LOAD_EFFECT).pipe(
+        this.authService.loadRole().pipe(
           map((data) => {
-            console.log('Load role');
+            console.log('Load role', data);
             return loadRoleSuccess({ data })
           }),
           catchError((error) => {
